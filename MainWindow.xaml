@@ -4,11 +4,14 @@
         Title="Drag and Drop Window"
         Width="782" Height="376">
     <Grid>
-        <Canvas Margin="20" Background="#FFEBEBEB" Name="DesigningCanvas">
+
+
+        <ScrollViewer>
+        <Canvas Name="DesigningCanvas" Margin="20" Background="#FFEBEBEB" >
             <TextBox Text="It's a TextBox control" Canvas.Left="50" Canvas.Top="30" Width="177" />
             <Label Content="It's a Label control" Canvas.Left="50" Width="110"/>
             <Button Content="It's a Button control" Canvas.Left="50" Canvas.Top="60"/>
-            <RadioButton Canvas.Left="50" Canvas.Top="90" Height="30" Name="radioButton1">
+            <RadioButton Name="radioButton1"  Canvas.Left="50" Canvas.Top="90" Height="30" >
                 <RadioButton.Content>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="It's a Custom RadioButton Control with CheckBox control"/>
@@ -16,11 +19,19 @@
                     </StackPanel>
                 </RadioButton.Content>
             </RadioButton>
-            <CheckBox Canvas.Left="50" Canvas.Top="120
-                      " Content="It's a CheckBox control" Height="16" Name="checkBox1" />
-            <ListBox Canvas.Left="189" Canvas.Top="146" Height="100" Name="listBox1" Width="151">
+            <CheckBox Name="checkBox1"   Canvas.Left="50" Canvas.Top="120
+                      " Content="It's a CheckBox control" Height="16" />
+            <ListBox  Name="listBox1" Canvas.Left="189" Canvas.Top="146" Height="100"  Width="151">
                 <ListBoxItem Content="It's a ListBox control" />
             </ListBox>
-        </Canvas>        
+        </Canvas>  
+        </ScrollViewer>
+        
+        <!--
+        <Border Width="100" Height="100"  CornerRadius="50" BorderBrush="Black" BorderThickness="2">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                 FontSize="50"   Foreground="Blue"  >i</TextBlock>
+        </Border>
+        -->
     </Grid>
 </Window>

@@ -25,89 +25,92 @@ namespace DragAndDropApp
         {
             InitializeComponent();
             /*
-             * Assigning PreviewMouseLeftButtonDown, PreviewMouseMove and PreviewMouseLeftButtonUp
-             * events to each controls on our canvas control.
-             * Some controls events like TextBox's MouseLeftButtonDown doesn't fire, because of that
-             * we use Preview events.
+             * Назначение PreviewMouseLeftButtonDown, PreviewMouseMove и PreviewMouseLeftButtonUp
+             * события для каждого элемента управления на нашем элементе управления холста.
+             * Некоторые события управления, такие как MouseLeftButtonDown TextBox, не срабатывают из-за этого
+             * мы используем события Preview.
              */
             foreach (Control control in DesigningCanvas.Children)
             {
                 control.PreviewMouseLeftButtonDown += this.MouseLeftButtonDown;
-                control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp;
+                //control.PreviewMouseLeftButtonUp += this.PreviewMouseLeftButtonUp;
                 control.Cursor = Cursors.Hand;
             }
 
-            // Setting the MouseMove event for our parent control(In this case it is DesigningCanvas).
+            // Установка события MouseMove для нашего родительского элемента управления (в данном случае это DesigningCanvas).
             DesigningCanvas.PreviewMouseMove += this.MouseMove;
 
-            // Setting up the Lines that we want to show the path of movement
-            List<Double> Dots = new List<double>();
+            // Настройка линий, по которым мы хотим показать путь движения
+            /*List<Double> Dots = new List<double>();
             Dots.Add(1);
-            Dots.Add(2);
-            Path1 = new Line();
+            Dots.Add(2);*/
+
+            /*Path1 = new Line();
             Path1.Width = DesigningCanvas.Width;
             Path1.Height = DesigningCanvas.Height;
             Path1.Stroke = Brushes.DarkGray;
-            Path1.StrokeDashArray = new DoubleCollection(Dots);
+            Path1.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            Path2 = new Line();
+            /*Path2 = new Line();
             Path2.Width = DesigningCanvas.Width;
             Path2.Height = DesigningCanvas.Height;
             Path2.Stroke = Brushes.DarkGray;
-            Path2.StrokeDashArray = new DoubleCollection(Dots);
+            Path2.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            Path3 = new Line();
+            /*Path3 = new Line();
             Path3.Width = DesigningCanvas.Width;
             Path3.Height = DesigningCanvas.Height;
             Path3.Stroke = Brushes.DarkGray;
-            Path3.StrokeDashArray = new DoubleCollection(Dots);
+            Path3.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            Path4 = new Line();
-            Path4.Width = DesigningCanvas.Width;
-            Path4.Height = DesigningCanvas.Height;
-            Path4.Stroke = Brushes.DarkGray;
-            Path4.StrokeDashArray = new DoubleCollection(Dots);
+            /* Path4 = new Line();
+             Path4.Width = DesigningCanvas.Width;
+             Path4.Height = DesigningCanvas.Height;
+             Path4.Stroke = Brushes.DarkGray;
+             Path4.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            FirstPosition = new Rectangle();
+            /*FirstPosition = new Rectangle();
             FirstPosition.Stroke = Brushes.DarkGray;
-            FirstPosition.StrokeDashArray = new DoubleCollection(Dots);
+            FirstPosition.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            CurrentPosition = new Rectangle();
+            /*CurrentPosition = new Rectangle();
             CurrentPosition.Stroke = Brushes.DarkGray;
-            CurrentPosition.StrokeDashArray = new DoubleCollection(Dots);
+            CurrentPosition.StrokeDashArray = new DoubleCollection(Dots);*/
 
-            // Adding Lines to main designing panel(Canvas)
-            DesigningCanvas.Children.Add(Path1);
+            // Добавление линий на главную панель проектирования (холст)
+            /*DesigningCanvas.Children.Add(Path1);
             DesigningCanvas.Children.Add(Path2);
             DesigningCanvas.Children.Add(Path3);
-            DesigningCanvas.Children.Add(Path4);
-            DesigningCanvas.Children.Add(FirstPosition);
-            DesigningCanvas.Children.Add(CurrentPosition);
+            DesigningCanvas.Children.Add(Path4);*/
+            /* DesigningCanvas.Children.Add(FirstPosition);
+             DesigningCanvas.Children.Add(CurrentPosition);*/
         }
 
         void PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // In this event, we should set the lines visibility to Hidden
-            MovingObject = null;
-            Path1.Visibility = System.Windows.Visibility.Hidden;
+            // В этом случае мы должны установить видимость линий на Скрытый
+            //MovingObject = null;                                  //  Если раскомментировать то при попытке перемещения пустоты выскакивает исключение 
+
+            /*Path1.Visibility = System.Windows.Visibility.Hidden;
             Path2.Visibility = System.Windows.Visibility.Hidden;
             Path3.Visibility = System.Windows.Visibility.Hidden;
-            Path4.Visibility = System.Windows.Visibility.Hidden;
-            FirstPosition.Visibility = System.Windows.Visibility.Hidden;
-            CurrentPosition.Visibility = System.Windows.Visibility.Hidden;
+            Path4.Visibility = System.Windows.Visibility.Hidden;*/
+
+            /*FirstPosition.Visibility = System.Windows.Visibility.Hidden;
+            CurrentPosition.Visibility = System.Windows.Visibility.Hidden;*/
         }
 
         private void MouseMove(object sender, MouseEventArgs e)
         {
             /*
-             * In this event, at first we check the mouse left button state. If it is pressed and 
-             * event sender object is similar with our moving object, we can move our control with
-             * some effects.
+             * В этом случае сначала проверяем состояние левой кнопки мыши. Если он нажат и
+             * объект отправителя события похож на наш движущийся объект, мы можем перемещать наш элемент управления с помощью
+             * некоторые эффекты.
              */
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                // We start to moving objects with setting the lines positions.
-                Path1.X1 = FirstArrowXPos;
+                // Перемещение объектов начинаем с задания позиций линий.
+               /* Path1.X1 = FirstArrowXPos;
                 Path1.Y1 = FirstArrowYPos;
                 Path1.X2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos;
                 Path1.Y2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos;
@@ -125,37 +128,40 @@ namespace DragAndDropApp
                 Path4.X1 = Path1.X1 + (MovingObject as FrameworkElement).ActualWidth;
                 Path4.Y1 = Path1.Y1 + (MovingObject as FrameworkElement).ActualHeight;
                 Path4.X2 = Path1.X2 + (MovingObject as FrameworkElement).ActualWidth;
-                Path4.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;
+                Path4.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;*/
 
-                FirstPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
+               /* FirstPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
                 FirstPosition.Height = (MovingObject as FrameworkElement).ActualHeight;
                 FirstPosition.SetValue(Canvas.LeftProperty, FirstArrowXPos);
-                FirstPosition.SetValue(Canvas.TopProperty, FirstArrowYPos);
+                FirstPosition.SetValue(Canvas.TopProperty, FirstArrowYPos);*/
 
-                CurrentPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
-                CurrentPosition.Height = (MovingObject as FrameworkElement).ActualHeight;
-                CurrentPosition.SetValue(Canvas.LeftProperty, Path1.X2);
-                CurrentPosition.SetValue(Canvas.TopProperty, Path1.Y2);
+                /*CurrentPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
+                CurrentPosition.Height = (MovingObject as FrameworkElement).ActualHeight;*/
+               /* CurrentPosition.SetValue(Canvas.LeftProperty, Path1.X2);
+                CurrentPosition.SetValue(Canvas.TopProperty, Path1.Y2);*/
 
-                Path1.Visibility = System.Windows.Visibility.Visible;
+               /* Path1.Visibility = System.Windows.Visibility.Visible;
                 Path2.Visibility = System.Windows.Visibility.Visible;
                 Path3.Visibility = System.Windows.Visibility.Visible;
-                Path4.Visibility = System.Windows.Visibility.Visible;
-                FirstPosition.Visibility = System.Windows.Visibility.Visible;
-                CurrentPosition.Visibility = System.Windows.Visibility.Visible;
+                Path4.Visibility = System.Windows.Visibility.Visible;*/
+               /* FirstPosition.Visibility = System.Windows.Visibility.Visible;
+                CurrentPosition.Visibility = System.Windows.Visibility.Visible;*/
 
                 /*
-                 * For changing the position of a control, we should use the SetValue method to setting
-                 * the Canvas.LeftProperty and Canvas.TopProperty dependencies.
-                 * 
-                 * For calculating the currect position of the control, we should do :
-                 *      Current position of the mouse cursor on the object parent - 
-                 *      Mouse position on the control at the start of moving -
-                 *      position of the control's parent.
+                 * Для изменения положения элемента управления мы должны использовать метод SetValue для установки
+                 * зависимости Canvas.LeftProperty и Canvas.TopProperty.
+                 *
+                 * Для расчета текущего положения элемента управления необходимо:
+                 * Текущая позиция курсора мыши на родительском объекте -
+                 * Положение мыши на элементе управления в начале движения -
+                 * позиция родителя элемента управления.
                  */
+
+                // движение по вертикали
                 (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
 
+                // движение по горизонтали
                 (MovingObject as FrameworkElement).SetValue(Canvas.TopProperty,
                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos);
             }
@@ -163,11 +169,11 @@ namespace DragAndDropApp
 
         private void MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //In this event, we get current mouse position on the control to use it in the MouseMove event.
+            // В этом случае мы получаем текущую позицию мыши на элементе управления, чтобы использовать его в событии MouseMove.
             FirstXPos = e.GetPosition(sender as Control).X;
             FirstYPos = e.GetPosition(sender as Control).Y;
-            FirstArrowXPos = e.GetPosition((sender as Control).Parent as Control).X - FirstXPos;
-            FirstArrowYPos = e.GetPosition((sender as Control).Parent as Control).Y - FirstYPos;
+            /*FirstArrowXPos = e.GetPosition((sender as Control).Parent as Control).X - FirstXPos;
+            FirstArrowYPos = e.GetPosition((sender as Control).Parent as Control).Y - FirstYPos;*/
             MovingObject = sender;
         }
     }
