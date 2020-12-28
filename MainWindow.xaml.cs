@@ -89,7 +89,7 @@ namespace DragAndDropApp
         void PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             // В этом случае мы должны установить видимость линий на Скрытый
-            //MovingObject = null;                                  //  Если раскомментировать то при попытке перемещения пустоты выскакивает исключение 
+            MovingObject = null;                                  //  Если раскомментировать то при попытке перемещения пустоты выскакивает исключение 
 
             /*Path1.Visibility = System.Windows.Visibility.Hidden;
             Path2.Visibility = System.Windows.Visibility.Hidden;
@@ -110,42 +110,42 @@ namespace DragAndDropApp
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 // Перемещение объектов начинаем с задания позиций линий.
-               /* Path1.X1 = FirstArrowXPos;
-                Path1.Y1 = FirstArrowYPos;
-                Path1.X2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos;
-                Path1.Y2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos;
+                /* Path1.X1 = FirstArrowXPos;
+                 Path1.Y1 = FirstArrowYPos;
+                 Path1.X2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos;
+                 Path1.Y2 = e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).Y - FirstYPos;
 
-                Path2.X1 = Path1.X1 + (MovingObject as FrameworkElement).ActualWidth;
-                Path2.Y1 = Path1.Y1;
-                Path2.X2 = Path1.X2 + (MovingObject as FrameworkElement).ActualWidth;
-                Path2.Y2 = Path1.Y2;
+                 Path2.X1 = Path1.X1 + (MovingObject as FrameworkElement).ActualWidth;
+                 Path2.Y1 = Path1.Y1;
+                 Path2.X2 = Path1.X2 + (MovingObject as FrameworkElement).ActualWidth;
+                 Path2.Y2 = Path1.Y2;
 
-                Path3.X1 = Path1.X1;
-                Path3.Y1 = Path1.Y1 + (MovingObject as FrameworkElement).ActualHeight;
-                Path3.X2 = Path1.X2;
-                Path3.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;
+                 Path3.X1 = Path1.X1;
+                 Path3.Y1 = Path1.Y1 + (MovingObject as FrameworkElement).ActualHeight;
+                 Path3.X2 = Path1.X2;
+                 Path3.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;
 
-                Path4.X1 = Path1.X1 + (MovingObject as FrameworkElement).ActualWidth;
-                Path4.Y1 = Path1.Y1 + (MovingObject as FrameworkElement).ActualHeight;
-                Path4.X2 = Path1.X2 + (MovingObject as FrameworkElement).ActualWidth;
-                Path4.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;*/
+                 Path4.X1 = Path1.X1 + (MovingObject as FrameworkElement).ActualWidth;
+                 Path4.Y1 = Path1.Y1 + (MovingObject as FrameworkElement).ActualHeight;
+                 Path4.X2 = Path1.X2 + (MovingObject as FrameworkElement).ActualWidth;
+                 Path4.Y2 = Path1.Y2 + (MovingObject as FrameworkElement).ActualHeight;*/
 
-               /* FirstPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
-                FirstPosition.Height = (MovingObject as FrameworkElement).ActualHeight;
-                FirstPosition.SetValue(Canvas.LeftProperty, FirstArrowXPos);
-                FirstPosition.SetValue(Canvas.TopProperty, FirstArrowYPos);*/
+                /* FirstPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
+                 FirstPosition.Height = (MovingObject as FrameworkElement).ActualHeight;
+                 FirstPosition.SetValue(Canvas.LeftProperty, FirstArrowXPos);
+                 FirstPosition.SetValue(Canvas.TopProperty, FirstArrowYPos);*/
 
                 /*CurrentPosition.Width = (MovingObject as FrameworkElement).ActualWidth;
                 CurrentPosition.Height = (MovingObject as FrameworkElement).ActualHeight;*/
-               /* CurrentPosition.SetValue(Canvas.LeftProperty, Path1.X2);
-                CurrentPosition.SetValue(Canvas.TopProperty, Path1.Y2);*/
+                /* CurrentPosition.SetValue(Canvas.LeftProperty, Path1.X2);
+                 CurrentPosition.SetValue(Canvas.TopProperty, Path1.Y2);*/
 
-               /* Path1.Visibility = System.Windows.Visibility.Visible;
-                Path2.Visibility = System.Windows.Visibility.Visible;
-                Path3.Visibility = System.Windows.Visibility.Visible;
-                Path4.Visibility = System.Windows.Visibility.Visible;*/
-               /* FirstPosition.Visibility = System.Windows.Visibility.Visible;
-                CurrentPosition.Visibility = System.Windows.Visibility.Visible;*/
+                /* Path1.Visibility = System.Windows.Visibility.Visible;
+                 Path2.Visibility = System.Windows.Visibility.Visible;
+                 Path3.Visibility = System.Windows.Visibility.Visible;
+                 Path4.Visibility = System.Windows.Visibility.Visible;*/
+                /* FirstPosition.Visibility = System.Windows.Visibility.Visible;
+                 CurrentPosition.Visibility = System.Windows.Visibility.Visible;*/
 
                 /*
                  * Для изменения положения элемента управления мы должны использовать метод SetValue для установки
@@ -156,7 +156,7 @@ namespace DragAndDropApp
                  * Положение мыши на элементе управления в начале движения -
                  * позиция родителя элемента управления.
                  */
-
+                
                 // движение по вертикали
                 (MovingObject as FrameworkElement).SetValue(Canvas.LeftProperty,
                     e.GetPosition((MovingObject as FrameworkElement).Parent as FrameworkElement).X - FirstXPos);
